@@ -6,6 +6,8 @@ app.route("/")
 def index():
     return render_template("index.html")
 
-app.route("/private")
+app.route("/private", methods=["GET"])
 def private():
-    return render_template("private.html")
+    user = request.args.get("username")
+    password = request.args.get("password")
+    return render_template("private.html", user=user, password=password)
